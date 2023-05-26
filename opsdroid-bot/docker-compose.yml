@@ -1,0 +1,17 @@
+# docker-compose.yml
+version: "3.5"
+
+services:
+  opsdroid:
+    image: ghcr.io/opsdroid/opsdroid:latest
+    ports:
+      - "80:8080"
+    volumes:
+      - ./skills:/home/opsdroid/skills
+      - ./config/configuration.yaml:/home/opsdroid/.config/opsdroid/configuration.yaml
+    networks:
+      - opsdroid
+
+networks:
+  opsdroid:
+    name: opsdroid
